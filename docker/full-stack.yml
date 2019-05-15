@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+  wp:
+    image: ezmiller/ctwp-wp:latest
+    ports:
+      - "8080:80"
+    secrets:
+      - ctwp_db_password
+    environment:
+      WORDPRESS_DB_NAME: ctwp
+      # WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_PASSWORD_FILE: /run/secrets/ctwp_db_password
+
+  mysql:
+    image: mysql:5.6
+    ports:
+      - 3306:3306
+    volumes:
+      - dbdata:/var/lib/mysql
+    secrets:
+      - ctwp_db_password
+    environment:
+      MYSQL_DATABASE: ctwp
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/ctwp_db_password
+
+secrets:
+  ctwp_db_password:
+    external: true
+
+volumes:
+  dbdata:
+

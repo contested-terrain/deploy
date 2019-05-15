@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: "mysql:5.6"
+    environment:
+      WORDPRESS_DB_NAME: ctwp
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/ctwp_db_password
+    ports:
+      - 3306:3306
+    volumes:
+      - dbdata:/var/lib/mysql
+    secrets:
+      - ctwp_db_password
+
+secrets:
+  ctwp_db_password:
+    external: true
+
+volumes:
+  dbdata:
