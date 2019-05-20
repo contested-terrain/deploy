@@ -5,11 +5,12 @@ services:
     image: wordpress:latest
     ports:
       - "8080:80"
+    volumes:
+      - ./wp-files/plugins:/var/www/html/wp-content/plugins
     secrets:
       - ctwp_db_password
     environment:
       WORDPRESS_DB_NAME: ctwp
-      # WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_PASSWORD_FILE: /run/secrets/ctwp_db_password
 
   mysql:

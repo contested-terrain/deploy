@@ -19,4 +19,4 @@ $DOCKER_CMD run -it --rm \
             --volumes-from $WP_CONTAINER \
             --net container:$WP_CONTAINER \
             --name "wp-cli" \
-            wordpress:cli ${@:1}
+            wordpress:cli "${@:1}"

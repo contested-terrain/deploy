@@ -19,8 +19,17 @@ resource "digitalocean_droplet" "wp" {
   }
 
   provisioner "file" {
-    source = "./docker/full-stack.yml"
-    destination = "./full-stack.yml"
+    source = "${var.docker_config}"
+    destination = "./stack.yml"
+  }
+
+  provisioner "remote-exec" {
+    inline = ["mkdir -p ./wp-files"]
+  }
+
+  provisioner "file" {
+    source = "${var.wp_files}" # path must include trailing /
+    destination = "./wp-files"
   }
 
   provisioner "file" {
@@ -45,7 +54,7 @@ resource "digitalocean_droplet" "wp" {
       "echo \"Deploying stack...\"",
       "docker swarm init --advertise-addr ${digitalocean_droplet.wp.ipv4_address_private}",
       "echo ${random_string.wp_db_password.result} | docker secret create ctwp_db_password -",
-      "docker stack up -c full-stack.yml ctwp",
+      "docker stack up -c stack.yml ctwp",
     ]
   }
 
