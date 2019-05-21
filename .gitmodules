@@ -1,0 +1,3 @@
+[submodule "ctwp/wp-files/ctwp-v2/plugins/acf"]
+	path = ctwp/wp-files/ctwp-v2/plugins/acf
+	url = git://github.com/AdvancedCustomFields/acf.git
