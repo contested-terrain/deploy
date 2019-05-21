@@ -41,6 +41,7 @@ module "ctwp-v2" {
   name              = "ctwp-v2"
   docker_config     = "./docker/stack_ctwp-v2.yml"
   wp_files          = "./wp-files/ctwp-v2/"
+  wp_db_path        = "./ctwp-v2_2019-05-21-a0f5500.sql"
   ssh_key_id        = "${digitalocean_ssh_key.ct_key.id}"
   private_key_path  = "${var.private_key_path}"
 }
