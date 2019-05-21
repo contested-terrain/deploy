@@ -25,7 +25,9 @@ The digital ocean API token must be acquired through the digital ocean site or v
 
 Generate these key files with: `ssh-keygen -o -a 100 -t ssh-ed25519 -C ct@digitalocean`.
 
-2. Once these variables are defined, you should be able to deploy the infrastructure using this simple command:
+2. Some of the WP files that are mounted into the WP instances are plugins or other repositories included as git submodules. Before deploying the infrastructure, you want to make sure that these submodules are initialized and up to date. 
+
+3. Once the terraform varialbes are declared and the submodules are ready, you should be able to deploy the infrastructure using this simple command:
 
 ```
 terraform apply
