@@ -1,3 +1,6 @@
 [submodule "ctwp/wp-files/ctwp-v2/plugins/acf"]
 	path = ctwp/wp-files/ctwp-v2/plugins/acf
 	url = git://github.com/AdvancedCustomFields/acf.git
+[submodule "ctwp/wp-files/ctwp-v2/plugins/acf-to-rest-api"]
+	path = ctwp/wp-files/ctwp-v2/plugins/acf-to-rest-api
+	url = git://github.com/airesvsg/acf-to-rest-api.git
